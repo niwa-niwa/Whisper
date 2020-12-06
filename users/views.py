@@ -1,5 +1,15 @@
 from django.shortcuts import render
 from django.views import generic
 
-class IndexView(generic.TemplateView):
-    template_name = "users.html"
+from accounts.models import CustomUser
+
+
+class IndexView(generic.ListView):
+    context_object_name = 'users'
+    model = CustomUser
+    template_name = 'users.html'
+    
+    def get_queryset(self):
+        users = CustomUser.objects.all()
+        print('result= '+ str(users))
+        return users

@@ -4,4 +4,23 @@
 
 {% block content %}
 <h1>ユーザー一覧</h1>
+
+{% if users %}
+    <ul class="list-unstyled">
+        {% for user in users %}
+            <li class="media">
+                <div class="media-body">
+                    <div>
+                        <a href="{{user.id}}">
+                            {{user.username}}
+                        </a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+<p>表示できるユーザーはいません</p>
+{% endif %}
+
 {% endblock content %}

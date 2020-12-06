@@ -46,11 +46,11 @@ INSTALLED_APPS = [
 
     'posts.apps.PostsConfig',
     'accounts.apps.AccountsConfig',
+    'users.apps.UsersConfig',
 
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
