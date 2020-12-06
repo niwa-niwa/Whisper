@@ -186,7 +186,7 @@ LOGGING ={
 SITE_ID=1
 
 AUTHENTICATION_BACKENDS = (
-    'allauth.account.auth.backends.AuthenticationBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -200,3 +200,6 @@ LOGIN_REDIRECT_URL = 'posts:index'
 ACCOUNT_EMAIL_REDIRECT_URL = 'account_login'
 
 ACCOUNT_LOGOUT_ON_GET = True
+
+# 開発用の設定
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

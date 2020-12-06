@@ -11,7 +11,7 @@
             <ul class="navbar-nav">
             {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a href="{% url 'account_logout' %}" class="nav-link"></a>Log Out
+                    <a href="{% url 'account_logout' %}" class="nav-link">Log Out</a>
                 </li>
             {% else %}
                 <li class="nav-item {% block active_signup %}{% endblock active_signup %}">

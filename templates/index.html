@@ -10,6 +10,11 @@
 
 {% block content %}
     <h2>ここはコンテントエリアです。</h2>
+    
+    {% if user.is_authenticated %}
+        <p>あなたはログイン中です</p>
+    {% endif %}
+
 {% endblock content %}
 
 {% block footer %}
