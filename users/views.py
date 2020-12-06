@@ -13,3 +13,9 @@ class IndexView(generic.ListView):
         users = CustomUser.objects.all()
         print('result= '+ str(users))
         return users
+
+
+class UserProfile(generic.DetailView):
+    context_object_name = 'user'
+    model = CustomUser
+    template_name = 'user_profile.html'
