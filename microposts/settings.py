@@ -142,6 +142,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+# 画像の置き場所
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 #Logging Configure
 LOGGING ={
     'version': 1, #1固定
