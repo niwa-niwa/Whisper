@@ -8,6 +8,7 @@ class IndexView(generic.ListView):
     context_object_name = 'users'
     model = CustomUser
     template_name = 'users.html'
+    paginate_by = 10
     
     def get_queryset(self):
         users = CustomUser.objects.all()

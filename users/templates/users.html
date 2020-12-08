@@ -29,4 +29,34 @@
 <p>表示できるユーザーはいません</p>
 {% endif %}
 
+{% if is_paginated %}
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+        {% for page_num in page_obj.paginator.page_range %}
+            {% if page_obj.number == page_num %}
+                <li class="page-item active">
+                    <a href="#" class="page-link">{{ page_num }}</a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a href="?page={{ page_num }}" class="page-link">{{ page_num }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+                    <span>&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}
+
+
 {% endblock content %}
