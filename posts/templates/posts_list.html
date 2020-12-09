@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ポスト一覧 | {{ SITE_NAME }}{% endblock title %}
+
+{% block content %}
+    <ul class="list-unstyled">
+        {% for post in posts %}
+            <li class="media mb-3">
+                <img src="" alt="" class="mr-2 rounded">
+                <div class="media-body">
+                    <div>
+                        <a href=""><span>{{ post.user.username }}</span></a>
+                    </div>
+                    <div>
+                        <p class="mb-0">{{ post.content }}</p>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
