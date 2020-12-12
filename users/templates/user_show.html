@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}プロフィール | {{ SITE_NAME}}{% endblock title %}
 
 {% block content %}
@@ -12,7 +14,7 @@
                     <h3 class="card-title">{{ cuser.username }}</h3>
                 </div>
                 <div class="card-body">
-                    <img src="https://jmva.or.jp/wp-content/uploads/2018/07/noimage.png"size="500" alt="" class="rounded img-fluid">
+                    <img src="{% static 'img/noimage.png' %}" size="500" alt="" class="rounded img-fluid">
                 </div>
             </div>
         </aside>
