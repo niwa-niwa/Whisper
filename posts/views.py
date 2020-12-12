@@ -3,12 +3,14 @@ from django.views import generic
 from .models import Post
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class IndexView(generic.TemplateView):
     template_name = "index.html"
 
-class PostsListView(generic.ListView):
+class PostsListView(LoginRequiredMixin, generic.ListView):
     context_object_name = 'posts'
+    login_url = 'account_login'
     model = Post
     template_name = 'posts_list.html'
     paginate_by = 20
