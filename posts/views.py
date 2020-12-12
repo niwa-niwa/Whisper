@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.views import generic
 from .models import Post
 from django.urls import reverse_lazy
@@ -39,3 +40,14 @@ class PostStore(LoginRequiredMixin, generic.CreateView):
     def form_invalid(self, form):
         messages.error(self.request, "ポストの作成に失敗しました。")
         return super().form_invalid(form)
+
+
+class PostDelete(LoginRequiredMixin, generic.DeleteView):
+    model = Post
+    template_name = 'post_delete.html'
+    success_url = reverse_lazy('posts:post_delete')
+
+    def delete(self, request, *args, **kwargs):
+        # 自分以外の投稿は削除できないようにする
+        messages.success(self.request, "投稿を削除しました。")
+        return super().delete(request, *args, **kwargs)
