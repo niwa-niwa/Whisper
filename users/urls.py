@@ -5,6 +5,7 @@ from . import views
 
 app_name = 'users'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name="users"),
-    path('profile/<int:pk>/', views.UserProfile.as_view(), name='user_profile'),
+    path('', views.UsersIndex.as_view(), name="users_index"),
+    path('<int:pk>/profile/', views.UserShow.as_view(), name='user_profile'),
+    # path('<int:pk>/posts/', views.Posts.as_view(), name='show_posts'),
 ]
