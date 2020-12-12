@@ -6,5 +6,5 @@ from . import views
 app_name = 'posts'
 urlpatterns = [
     path('', views.IndexView.as_view(), name="index"),
-    path('list/', views.PostsListView.as_view(), name="posts_list")
+    path('posts/', views.PostsIndex.as_view(), name="posts_index")
 ]
