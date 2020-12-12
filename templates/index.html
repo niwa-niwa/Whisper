@@ -4,19 +4,19 @@
 
 {% block title %}Microposts{% endblock title %}
 
-{% comment %} {% block navigation %}
-    <h1>ここはナビゲーションエリアです</h1>
-{% endblock navigation %} {% endcomment %}
-
 {% block content %}
-    <h2>ここはコンテントエリアです。</h2>
-    
     {% if user.is_authenticated %}
-        <p>あなたはログイン中です</p>
+        {{ user.username }}
+    {% else %}
+        <div class="center jumbotron">
+            <div class="text-center">
+                <h1>Welcome to the Microposts</h1>
+                <a href="{% url 'account_signup' %}" class="btn btn-lg btn-primary">Sign Up Now!</a>
+            </div>
+        </div>
     {% endif %}
 
 {% endblock content %}
 
 {% block footer %}
-    <h3>ここはフッターエリアです</h3>
 {% endblock footer %}
