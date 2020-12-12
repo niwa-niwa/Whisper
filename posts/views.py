@@ -13,7 +13,7 @@ class PostsIndex(LoginRequiredMixin, generic.ListView):
     context_object_name = 'posts'
     login_url = 'account_login'
     model = Post
-    template_name = 'posts_list.html'
+    template_name = 'posts_index.html'
     paginate_by = 20
 
     def get_queryset(self):
