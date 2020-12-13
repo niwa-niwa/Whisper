@@ -32,6 +32,11 @@
                     <button class="btn btn-primary" name="post_form" type='submit'>投稿</button>
                 </form>
             {% endif %}
+            <pre> 
+                {% filter force_escape %}
+                {% debug  %}
+                {% endfilter %}
+            </pre>
         </div>
     </div>
 {% else %}
