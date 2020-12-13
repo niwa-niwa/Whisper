@@ -3,7 +3,6 @@ from django.views import generic
 from .models import Post
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import PostForm
 from django.http import HttpResponseRedirect
@@ -52,6 +51,7 @@ class PostDelete(LoginRequiredMixin, generic.DeleteView):
         # 自分以外の投稿は削除できないようにする
         messages.success(self.request, "投稿を削除しました。")
         return super().delete(request, *args, **kwargs)
+
 
 def delete_post(request, pk):
     post = get_object_or_404(Post, id= pk)
