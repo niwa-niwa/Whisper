@@ -17,7 +17,7 @@
         </aside>
         <div class="col-sm-8">
             {% if posts %}
-                {% include 'parts/posts.html' with posts=posts only %}
+                {% include 'parts/posts.html' with posts=posts user=user only %}
             {% else %}
                 <p>まだ投稿がありません。</p>
             {% endif %}
