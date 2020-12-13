@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import CustomUser
+from django.urls import reverse
 
 
 class Post(models.Model):
@@ -13,3 +14,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.content
+
+    def get_absolute_url(self):
+        return reverse("users:users_index")
+        # return reverse("users:users_index", kwargs={'pk': self.pk})

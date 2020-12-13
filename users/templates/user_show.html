@@ -5,8 +5,7 @@
 {% block title %}プロフィール | {{ SITE_NAME}}{% endblock title %}
 
 {% block content %}
-<h1>プロフィール</h1>
-{% if user %}
+{% if cuser %}
     <div class="row">
         <aside class="col-sm-4">
             <div class="card">
@@ -24,6 +23,15 @@
                 <li class="nav-item"><a href="" class="nav-link">Followings</a></li>
                 <li class="nav-item"><a href="" class="nav-link">Followers</a></li>
             </ul>
+            {% if user.is_authenticated %}
+                <form method="post" name="post_form" id="post_form">
+                    {% csrf_token %}
+                    <div class="from-group">
+                        {{ post_form.as_p}}
+                    </div>
+                    <button class="btn btn-primary" name="post_form" type='submit'>投稿</button>
+                </form>
+            {% endif %}
         </div>
     </div>
 {% else %}

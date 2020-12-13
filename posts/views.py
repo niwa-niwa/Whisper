@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import PostCreateForm
+from .forms import PostForm
 
 
 class IndexView(generic.TemplateView):
@@ -27,7 +27,7 @@ class PostsIndex(LoginRequiredMixin, generic.ListView):
 class PostStore(LoginRequiredMixin, generic.CreateView):
     model = Post
     template_name = 'post_store.html'
-    form_class = PostCreateForm
+    form_class = PostForm
     success_url = reverse_lazy('posts:post_index')
 
     def form_valid(self, form):
