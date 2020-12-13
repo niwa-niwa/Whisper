@@ -32,11 +32,11 @@
                     <button class="btn btn-primary" name="post_form" type='submit'>投稿</button>
                 </form>
             {% endif %}
-            <pre> 
-                {% filter force_escape %}
-                {% debug  %}
-                {% endfilter %}
-            </pre>
+            {% if cuser.post.all %}
+                {% include 'parts/posts.html' with posts=cuser.post.all only %}
+            {% else %}
+                <p>投稿がありません。</p>
+            {% endif %}
         </div>
     </div>
 {% else %}
