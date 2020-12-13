@@ -28,7 +28,7 @@ class PostStore(LoginRequiredMixin, generic.CreateView):
     model = Post
     template_name = 'post_store.html'
     form_class = PostForm
-    success_url = reverse_lazy('posts:post_index')
+    success_url = reverse_lazy('posts:posts_index')
 
     def form_valid(self, form):
         post = form.save(commit=False)

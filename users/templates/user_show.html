@@ -27,7 +27,7 @@
                 <form method="post" name="post_form" id="post_form">
                     {% csrf_token %}
                     <div class="from-group">
-                        {{ post_form.as_p}}
+                        {{ form.as_p}}
                     </div>
                     <button class="btn btn-primary" name="post_form" type='submit'>投稿</button>
                 </form>
