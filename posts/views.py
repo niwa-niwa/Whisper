@@ -28,18 +28,20 @@ class PostStore(LoginRequiredMixin, generic.CreateView):
     model = Post
     template_name = 'post_store.html'
     form_class = PostForm
-    success_url = reverse_lazy('posts:posts_index')
+    # success_url = reverse_lazy('posts:posts_index')
 
     def form_valid(self, form):
         post = form.save(commit=False)
         post.user = self.request.user
         post.save()
         messages.success(self.request, 'ポストを作成しました。')
-        return super().form_valid(form)
+        return HttpResponseRedirect(self.request.META.get('HTTP_REFERER'))
+        # return super().form_valid(form) #リダイレクトさせない場合
 
     def form_invalid(self, form):
         messages.error(self.request, "ポストの作成に失敗しました。")
-        return super().form_invalid(form)
+        return HttpResponseRedirect(self.request.META.get('HTTP_REFERER'))
+        # return super().form_invalid(form)
 
 
 class PostDelete(LoginRequiredMixin, generic.DeleteView):
