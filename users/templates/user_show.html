@@ -28,7 +28,6 @@
                     {% csrf_token %}
                     <div class="from-group">
                         {{ form.content }}
-                        {% comment %} {{ form.as_p}} {% endcomment %}
                     </div>
                     <button class="btn btn-primary" name="post_form" type='submit'>投稿</button>
                 </form>
