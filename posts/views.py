@@ -17,10 +17,11 @@ class PostsIndex(LoginRequiredMixin, generic.ListView):
     login_url = 'account_login'
     model = Post
     template_name = 'posts_index.html'
-    paginate_by = 20
+    # paginate_by = 20
 
     def get_queryset(self):
-        posts = Post.objects.filter(user=self.request.user).order_by('-created_at')
+        posts = Post.objects.filter(user=self.request.user)
+        # posts = Post.objects.filter(user=self.request.user).order_by('-created_at')
         return posts
 
 
@@ -50,7 +51,7 @@ class PostDelete(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy('posts:posts_index')
 
     def delete(self, request, *args, **kwargs):
-        # 自分以外の投稿は削除できないようにする
+        # TODO HTMLフォーム側をPOSTにする 自分以外の投稿は削除できないようにする
         messages.success(self.request, "投稿を削除しました。")
         return super().delete(request, *args, **kwargs)
 
