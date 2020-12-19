@@ -34,7 +34,7 @@
                 </form>
             {% endif %}
             {% if cuser.post.all %}
-                {% include 'parts/posts.html' with posts=cuser.post.all only %}
+                {% include 'parts/posts.html' with posts=cuser.post.all user=user only %}
             {% else %}
                 <p>投稿がありません。</p>
             {% endif %}
