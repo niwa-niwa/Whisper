@@ -1,10 +1,16 @@
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls.base import reverse_lazy
 from django.views import generic
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 from accounts.models import CustomUser
 from posts.views import PostStore
+from users.models import UsersRelation
+
+from django.core.exceptions import ObjectDoesNotExist
 
 
 class UsersIndex(LoginRequiredMixin, generic.ListView):
@@ -38,3 +44,40 @@ class UserPostsListAndCreate(UserShow, PostStore,):
         context = {'form':form_data, 'cuser':list_data}
 
         return render(request, 'user_show.html', context)
+
+
+# フォローする
+def followings(request, pk):
+
+    user = request.user
+
+    try:
+        follow_user = get_object_or_404(CustomUser, id=pk)
+
+        UsersRelation.objects.create(following=follow_user, follower=user)
+
+        messages.success(request, follow_user.username + 'をフォローしました。')
+
+    except ObjectDoesNotExist:
+        
+        messages.error(request, '該当のユーザーは存在しません。')
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+# フォロー解除
+def unfollowings(request, pk):
+
+    user = request.user
+
+    try:
+        follow_user = get_object_or_404(CustomUser, id=pk)
+
+        UsersRelation.objects.filter(following=follow_user, follower=user).delete()
+
+        messages.success(request, follow_user.username + 'をフォロー解除しました。')
+
+    except ObjectDoesNotExist:
+        messages.error(request, '該当のユーザーは存在しません。')
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

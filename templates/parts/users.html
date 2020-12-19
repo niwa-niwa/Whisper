@@ -1,4 +1,5 @@
 {% load static %}
+
 {% if cusers %}
     <ul class="list-unstyled">
         {% for cuser in cusers %}
@@ -14,6 +15,9 @@
                                 View Profile
                             </a>
                         </p>
+                    </div>
+                    <div>
+                        {% include 'parts/follow_button.html' with cuser=cuser user=user only %}
                     </div>
                 </div>
             </li>
