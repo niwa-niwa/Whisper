@@ -34,7 +34,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -210,11 +209,11 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
 
-LOGIN_REDIRECT_URL = 'posts:posts_index'
+LOGIN_REDIRECT_URL = 'index'
 ACCOUNT_EMAIL_REDIRECT_URL = 'account_login'
 
 ACCOUNT_LOGOUT_ON_GET = True
-ACCOUNT_LOGOUT_REDIRECT_URL = 'posts:index'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
 
 # 開発用の設定
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

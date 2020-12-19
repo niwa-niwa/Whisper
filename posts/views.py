@@ -8,10 +8,6 @@ from .forms import PostForm
 from django.http import HttpResponseRedirect
 
 
-class IndexView(generic.TemplateView):
-    template_name = "index.html"
-
-
 class PostsIndex(LoginRequiredMixin, generic.ListView):
     context_object_name = 'posts'
     login_url = 'account_login'
