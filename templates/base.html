@@ -2,7 +2,9 @@
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,12 +15,21 @@
     <title>{% block title %}{% endblock title %}</title>
 
 </head>
+
 <body>
+
     {% include 'navigation.html' %}
 
+    {% if messages %}
+        {% include 'parts/message.html' %}
+    {% endif %}
+
     <div class="container">
+
         {% block content %}{% endblock content %}
+
     </div>
+
     {% block footer %}{% endblock footer %}
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -28,4 +39,5 @@
     {% block js %}{% endblock js %}
 
 </body>
+
 </html>

@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 import microposts.const
+from django.contrib.messages import constants as messages
 
 #定数を定義
 microposts.const.SITE_NAME = "Microposts"
@@ -133,6 +134,14 @@ USE_L10N = True
 USE_TZ = True
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+#メッセージのスタイル
+MESSAGE_TAGS = {
+    messages.ERROR : 'alert alert-danger',
+    messages.WARNING : 'alert alert-warning',
+    messages.SUCCESS : 'alert alert-success',
+    messages.INFO : 'alert alert-info',
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
