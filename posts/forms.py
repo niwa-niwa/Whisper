@@ -7,6 +7,10 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('content',)
 
+        widgets = {
+            'content': forms.Textarea(attrs={'rows':3,}),
+        }
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
