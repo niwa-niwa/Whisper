@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'layouts/base.html' %}
 
 {% block title %}ユーザー一覧 | {{ SITE_NAME}}{% endblock title %}
 
 {% block content %}
 <h1>ユーザー一覧</h1>
 
-{% include 'parts/users_list.html' with cusers=cusers only %}
+{% include 'parts/users.html' with cusers=cusers only %}
 
 {% endblock content %}

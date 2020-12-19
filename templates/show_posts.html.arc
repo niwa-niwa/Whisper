@@ -1,4 +1,5 @@
-{% extends 'base.html' %}
+{% comment %} 使っていないと思われる {% endcomment %}
+{% extends 'layouts/base.html' %}
 
 {% block title %}ポスト一覧 | {{ SITE_NAME}}{% endblock title %}
 
