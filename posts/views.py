@@ -20,8 +20,7 @@ class PostsIndex(LoginRequiredMixin, generic.ListView):
     # paginate_by = 20
 
     def get_queryset(self):
-        posts = Post.objects.filter(user=self.request.user)
-        # posts = Post.objects.filter(user=self.request.user).order_by('-created_at')
+        posts = Post.objects.filter(user=self.request.user).order_by('-created_at')
         return posts
 
 
@@ -45,16 +44,6 @@ class PostStore(LoginRequiredMixin, generic.CreateView):
         # return super().form_invalid(form)
 
 
-# class PostDelete(LoginRequiredMixin, generic.DeleteView):
-#     model = Post
-#     template_name = 'post_delete.html'
-#     success_url = reverse_lazy('posts:posts_index')
-
-#     def delete(self, request, *args, **kwargs):
-#         messages.success(self.request, "投稿を削除しました。")
-#         return super().delete(request, *args, **kwargs)
-
-
 def delete_post(request, pk):
 
     post = get_object_or_404(Post, id=pk)
@@ -62,5 +51,6 @@ def delete_post(request, pk):
 
     if post.user_id == user_id:
         post.delete()
+        messages.success(request, 'ポストを削除しました。')
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
