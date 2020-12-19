@@ -45,18 +45,22 @@ class PostStore(LoginRequiredMixin, generic.CreateView):
         # return super().form_invalid(form)
 
 
-class PostDelete(LoginRequiredMixin, generic.DeleteView):
-    model = Post
-    template_name = 'post_delete.html'
-    success_url = reverse_lazy('posts:posts_index')
+# class PostDelete(LoginRequiredMixin, generic.DeleteView):
+#     model = Post
+#     template_name = 'post_delete.html'
+#     success_url = reverse_lazy('posts:posts_index')
 
-    def delete(self, request, *args, **kwargs):
-        # TODO HTMLフォーム側をPOSTにする 自分以外の投稿は削除できないようにする
-        messages.success(self.request, "投稿を削除しました。")
-        return super().delete(request, *args, **kwargs)
+#     def delete(self, request, *args, **kwargs):
+#         messages.success(self.request, "投稿を削除しました。")
+#         return super().delete(request, *args, **kwargs)
 
 
 def delete_post(request, pk):
-    post = get_object_or_404(Post, id= pk)
-    post.delete()
+
+    post = get_object_or_404(Post, id=pk)
+    user_id = request.user.id
+
+    if post.user_id == user_id:
+        post.delete()
+
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
