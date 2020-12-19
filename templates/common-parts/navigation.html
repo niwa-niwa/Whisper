@@ -1,6 +1,14 @@
 <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a href="/" class="navbar-brand">Microposts</a>
+        <a href=
+            {% if user.is_authenticated %}
+                "{% url 'users:user_profile' user.pk %}"
+            {% else %}
+                "/"
+            {% endif %}
+            class="navbar-brand">
+            Microposts1
+        </a>
 
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>
