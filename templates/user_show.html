@@ -10,7 +10,7 @@
     <div class="row">
 
         <aside class="col-sm-4">
-            {% include 'common-parts/user-card.html' with cuser=cuser user=user form=form only %}
+            {% include 'common-parts/user-card.html' with cuser=cuser user=user form=form csrf_token=csrf_token only %}
         </aside>
         
         <div class="col-sm-8">
