@@ -5,37 +5,17 @@
 {% block title %}プロフィール | {{ SITE_NAME}}{% endblock title %}
 
 {% block content %}
+
 {% if cuser %}
     <div class="row">
 
         <aside class="col-sm-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">{{ cuser.username }}</h3>
-                </div>
-                <div class="card-body">
-                    <img src="{% static 'img/noimage.png' %}" size="500" alt="" class="rounded img-fluid">
-                </div>
-            </div>
+            {% include 'common-parts/user-card.html' with cuser=cuser user=user form=form only %}
         </aside>
         
         <div class="col-sm-8">
 
-            <ul class="nav nav-tabs nav-justified mb-3">
-                <li class="nav-item"><a href="{% url 'users:user_profile' user.pk %}" class="nav-link">TimeLine</a></li>
-                <li class="nav-item"><a href="" class="nav-link">Followings</a></li>
-                <li class="nav-item"><a href="" class="nav-link">Followers</a></li>
-            </ul>
-
-            {% if user.id == cuser.id %}
-                <form method="post" name="post_form" id="post_form">
-                    {% csrf_token %}
-                    <div class="from-group">
-                        {{ form.content }}
-                    </div>
-                    <button class="btn btn-primary" name="post_form" type='submit'>投稿</button>
-                </form>
-            {% endif %}
+            {% include 'common-parts/navtabs.html' with user=user only %}
 
             {% if cuser.post.all %}
                 {% include 'parts/posts.html' with posts=cuser.post.all user=user only %}
@@ -45,8 +25,10 @@
 
         </div>
     </div>
+
 {% else %}
     <p>該当のユーザーはいません</p>
+
 {% endif %}
 
 {% endblock content %}

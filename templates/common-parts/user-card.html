@@ -1,0 +1,18 @@
+{% load static %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">{{ cuser.username }}</h3>
+    </div>
+    <div class="card-body">
+        <img src="{% static 'img/noimage.png' %}" size="500" alt="" class="rounded img-fluid">
+    </div>
+</div>
+{% if user.id == cuser.id %}
+    <form method="post" name="post_form" id="post_form">
+        {% csrf_token %}
+        <div class="from-group">
+            {{ form.content }}
+        </div>
+        <button class="btn btn-primary" name="post_form" type='submit'>投稿</button>
+    </form>
+{% endif %}
