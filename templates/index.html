@@ -2,12 +2,12 @@
 
 {% load static %}
 
-{% block title %}Microposts{% endblock title %}
+{% block title %}{{ SITE_NAME }}{% endblock title %}
 
 {% block content %}
     <div class="center jumbotron">
         <div class="text-center">
-            <h1>Welcome to the Microposts</h1>
+            <h1>Welcome to the {{ SITE_NAME }}</h1>
             {% if user.is_authenticated %}
                 <a href="{% url 'users:user_profile' user.pk %}" class="btn btn-lg btn-primary">Go to Your Timeline</a>
                 {% comment %} <a href="{% url 'posts:posts_index'%}" class="btn btn-lg btn-primary">Go to Your Timeline</a> {% endcomment %}
