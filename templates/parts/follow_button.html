@@ -2,11 +2,11 @@
 
 {% with bool=user.followings.all|get_following:cuser.pk %}
     {% if bool %}
-        <a href="{% url 'users:user_unfollowing' cuser.pk %}" class="btn btn-danger btn-block">
+        <a href="{% url 'users:user_unfollowing' cuser.username %}" class="btn btn-danger btn-block">
             フォロー解除
         </a>
     {% else %}
-        <a href="{% url 'users:user_following' cuser.pk %}" class="btn btn-primary btn-block">
+        <a href="{% url 'users:user_following' cuser.username %}" class="btn btn-primary btn-block">
             フォローする
         </a>
     {% endif %}

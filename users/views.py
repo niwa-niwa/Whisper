@@ -67,12 +67,12 @@ class UserFollowers(PostStore):
 
 
 # フォローする
-def followings(request, pk):
+def followings(request, username):
 
     user = request.user
 
     try:
-        follow_user = get_object_or_404(CustomUser, id=pk)
+        follow_user = get_object_or_404(CustomUser, username=username)
 
         UsersRelation.objects.create(following=follow_user, follower=user)
 
@@ -86,12 +86,12 @@ def followings(request, pk):
 
 
 # フォロー解除
-def unfollowings(request, pk):
+def unfollowings(request, username):
 
     user = request.user
 
     try:
-        follow_user = get_object_or_404(CustomUser, id=pk)
+        follow_user = get_object_or_404(CustomUser, username=username)
 
         UsersRelation.objects.filter(following=follow_user, follower=user).delete()
 
