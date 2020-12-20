@@ -48,20 +48,26 @@ class UserPostsListAndCreate(UserShow, PostStore,):
         return render(request, 'user_page.html', context)
 
 
-class UserFollowings(PostStore):
+class UserFollowings(UserShow, PostStore):
     def get(self, request, *args, **kwargs):
         form_view = PostStore.get(self, request, *args, **kwargs)
         form_data = form_view.context_data['form']
-        context = {'form':form_data}
+        list_view = UserShow.get(self, request, *args, **kwargs)
+        list_data = list_view.context_data['cuser']
+        
+        context = {'form':form_data, 'cuser':list_data}
 
         return render(request, 'followings.html', context)
 
 
-class UserFollowers(PostStore):
+class UserFollowers(UserShow, PostStore):
     def get(self, request, *args, **kwargs):
         form_view = PostStore.get(self, request, *args, **kwargs)
         form_data = form_view.context_data['form']
-        context = {'form':form_data}
+        list_view = UserShow.get(self, request, *args, **kwargs)
+        list_data = list_view.context_data['cuser']
+
+        context = {'form':form_data, 'cuser':list_data}
 
         return render(request, 'followers.html', context)
 

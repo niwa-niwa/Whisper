@@ -3,24 +3,26 @@
 {% if cusers %}
     <ul class="list-unstyled">
         {% for cuser in cusers %}
-            <li class="media">
-                <img src="{% static 'img/noimage.png' %}" alt="" class="mr-2 rounded" size="75px" height="60px">
-                <div class="media-body">
-                    <div>
-                        {{cuser.username}}
+            {% if cuser.id != user.id %}
+                <li class="media">
+                    <img src="{% static 'img/noimage.png' %}" alt="" class="mr-2 rounded" size="75px" height="60px">
+                    <div class="media-body">
+                        <div>
+                            {{cuser.username}}
+                        </div>
+                        <div>
+                            <p>
+                                <a href="{% url 'users:user_page' cuser.username %}">
+                                    View Profile
+                                </a>
+                            </p>
+                        </div>
+                        <div>
+                            {% include 'parts/follow_button.html' with cuser=cuser user=user only %}
+                        </div>
                     </div>
-                    <div>
-                        <p>
-                            <a href="{% url 'users:user_page' cuser.username %}">
-                                View Profile
-                            </a>
-                        </p>
-                    </div>
-                    <div>
-                        {% include 'parts/follow_button.html' with cuser=cuser user=user only %}
-                    </div>
-                </div>
-            </li>
+                </li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% else %}

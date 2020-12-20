@@ -15,10 +15,10 @@
         
         <div class="col-sm-8">
 
-            {% include 'common-parts/navtabs.html' with user=user only %}
+            {% include 'common-parts/navtabs.html' with cuser=cuser user=user  %}
 
             {% if cuser.post.all %}
-                {% include 'parts/posts.html' with posts=cuser.post.all user=user only %}
+                {% include 'parts/posts.html' with posts=cuser.post.all user=user  %}
             {% else %}
                 <p>投稿がありません。</p>
             {% endif %}

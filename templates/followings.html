@@ -14,9 +14,9 @@
         
         <div class="col-sm-8">
 
-            {% include 'common-parts/navtabs.html' with user=user only %}
+            {% include 'common-parts/navtabs.html' with cuser=cuser user=user only %}
 
-            {% include 'parts/users.html' with cusers=user.followings.all user=user only %}
+            {% include 'parts/users.html' with cusers=cuser.followings.all user=user only %}
 
         </div>
     </div>

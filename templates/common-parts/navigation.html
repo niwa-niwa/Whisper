@@ -1,5 +1,7 @@
 <header class="mb-4">
+
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+
         <a href=
             {% if user.is_authenticated %}
                 "{% url 'users:user_page' user.username %}"
@@ -7,7 +9,7 @@
                 "/"
             {% endif %}
             class="navbar-brand">
-            {{ SITE_NAME}}
+            {{ SITE_NAME }}
         </a>
 
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
@@ -17,6 +19,7 @@
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
+
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a href="{% url 'users:users_index' %}" class="nav-link">Users</a></li>
                     <li class="nav-item dropdown">
@@ -35,6 +38,7 @@
                             </ul>
                         </ul>
                     </li>
+
                 {% else %}
                     <li class="nav-item {% block active_signup %}{% endblock active_signup %}">
                         <a href="{% url 'account_signup' %}" class="nav-link">Sign Up</a>
@@ -42,6 +46,7 @@
                     <li class="nav-item {% block active_login %}{% endblock active_login %}">
                         <a href="{% url 'account_login' %}" class="nav-link">Log In</a>
                     </li>
+
                 {% endif %}
             </ul>
         </div>

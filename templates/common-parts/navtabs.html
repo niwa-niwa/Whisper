@@ -1,5 +1,5 @@
 <ul class="nav nav-tabs nav-justified mb-3">
-    <li class="nav-item"><a href="{% url 'users:user_page' user.username %}" class="nav-link">TimeLine</a></li>
-    <li class="nav-item"><a href="{% url 'users:user_followings' user.username %}" class="nav-link">Followings</a></li>
-    <li class="nav-item"><a href="{% url 'users:user_followers' user.username %}" class="nav-link">Followers</a></li>
+    <li class="nav-item"><a href="{% url 'users:user_page' cuser.username %}" class="nav-link">TimeLine</a></li>
+    <li class="nav-item"><a href="{% url 'users:user_followings' cuser.username %}" class="nav-link">Followings</a></li>
+    <li class="nav-item"><a href="{% url 'users:user_followers' cuser.username %}" class="nav-link">Followers</a></li>
 </ul>
