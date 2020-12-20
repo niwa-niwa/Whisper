@@ -29,7 +29,7 @@ class UserShow(LoginRequiredMixin, generic.DetailView,):
     model = CustomUser
     slug_field = "username"
     slug_url_kwarg = "username"
-    template_name = 'user_show.html'
+    template_name = 'user_page.html'
 
     def get_queryset(self):
         cuser = CustomUser.objects.filter(username=self.kwargs.get("username"))
@@ -45,7 +45,7 @@ class UserPostsListAndCreate(UserShow, PostStore,):
         list_data = list_view.context_data['cuser']
         context = {'form':form_data, 'cuser':list_data}
 
-        return render(request, 'user_show.html', context)
+        return render(request, 'user_page.html', context)
 
 
 class UserFollowings(PostStore):
