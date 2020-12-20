@@ -204,7 +204,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USERNAME_REQUIRED = True
 
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -214,6 +214,9 @@ ACCOUNT_EMAIL_REDIRECT_URL = 'account_login'
 
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
+
+ACCOUNT_USERNAME_VALIDATORS = 'accounts.validator.custom_usename_validator'
+
 
 # 開発用の設定
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
