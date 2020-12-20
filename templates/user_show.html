@@ -7,6 +7,7 @@
 {% block content %}
 {% if cuser %}
     <div class="row">
+
         <aside class="col-sm-4">
             <div class="card">
                 <div class="card-header">
@@ -17,12 +18,15 @@
                 </div>
             </div>
         </aside>
+        
         <div class="col-sm-8">
+
             <ul class="nav nav-tabs nav-justified mb-3">
-                <li class="nav-item"><a href="" class="nav-link">TimeLine</a></li>
+                <li class="nav-item"><a href="{% url 'users:user_profile' user.pk %}" class="nav-link">TimeLine</a></li>
                 <li class="nav-item"><a href="" class="nav-link">Followings</a></li>
                 <li class="nav-item"><a href="" class="nav-link">Followers</a></li>
             </ul>
+
             {% if user.id == cuser.id %}
                 <form method="post" name="post_form" id="post_form">
                     {% csrf_token %}
@@ -32,11 +36,13 @@
                     <button class="btn btn-primary" name="post_form" type='submit'>投稿</button>
                 </form>
             {% endif %}
+
             {% if cuser.post.all %}
                 {% include 'parts/posts.html' with posts=cuser.post.all user=user only %}
             {% else %}
                 <p>投稿がありません。</p>
             {% endif %}
+
         </div>
     </div>
 {% else %}
