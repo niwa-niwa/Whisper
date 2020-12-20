@@ -1,13 +1,17 @@
 {% load user_filters %}
 
-{% with bool=user.followings.all|get_following:cuser.pk %}
-    {% if bool %}
-        <a href="{% url 'users:user_unfollowing' cuser.username %}" class="btn btn-danger btn-block">
-            フォロー解除
-        </a>
-    {% else %}
-        <a href="{% url 'users:user_following' cuser.username %}" class="btn btn-primary btn-block">
-            フォローする
-        </a>
-    {% endif %}
-{% endwith %}
+{% if user.id != cuser.id %}
+
+    {% with bool=user.followings.all|get_following:cuser.pk %}
+        {% if bool %}
+            <a href="{% url 'users:user_unfollowing' cuser.username %}" class="btn btn-danger btn-block">
+                フォロー解除
+            </a>
+        {% else %}
+            <a href="{% url 'users:user_following' cuser.username %}" class="btn btn-primary btn-block">
+                フォローする
+            </a>
+        {% endif %}
+    {% endwith %}
+
+{% endif %}
