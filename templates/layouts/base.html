@@ -20,11 +20,11 @@
 
     {% include 'common-parts/navigation.html' %}
 
-    {% if messages %}
-        {% include 'common-parts/message.html' %}
-    {% endif %}
-
     <div class="container">
+
+        {% if messages %}
+            {% include 'common-parts/message.html' %}
+        {% endif %}
 
         {% block content %}{% endblock content %}
 

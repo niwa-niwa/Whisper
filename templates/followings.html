@@ -1,0 +1,24 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}フォローイング | {{ SITE_NAME}}{% endblock title %}
+
+{% block content %}
+
+    <div class="row">
+
+        <aside class="col-sm-4">
+            {% include 'common-parts/user-card.html' with cuser=cuser user=user form=form csrf_token=csrf_token only %}
+        </aside>
+        
+        <div class="col-sm-8">
+
+            {% include 'common-parts/navtabs.html' with user=user only %}
+
+            {% include 'parts/users.html' with cusers=user.followings.all user=user only %}
+
+        </div>
+    </div>
+
+{% endblock content %}

@@ -21,15 +21,17 @@ class CustomUser(AbstractUser):
         return posts
 
 
-    # ユーザーがフォローしているユーザー取得
-    def getFollowings(self):
-        users_relation = apps.get_model('users', 'UsersRelation')
-        followings = users_relation.objects.filter(follower=self)
-        return followings
+    # # ユーザーがフォローしているユーザー取得
+    # def getFollowings(self):
+    #     users_relation = apps.get_model('users', 'UsersRelation')
+    #     followings = users_relation.objects.filter(follower=self).only('following')
+    #     print(vars(followings))
+    #     return followings
 
-    # ユーザーをフォローしているユーザー取得
-    def getFollowers(self):
-        users_relation = apps.get_model('users', 'UsersRelation')
-        followers = users_relation.objects.filter(following=self)
-        return followers
+
+    # # ユーザーをフォローしているユーザー取得
+    # def getFollowers(self):
+    #     users_relation = apps.get_model('users', 'UsersRelation')
+    #     followers = users_relation.objects.filter(following=self)
+    #     return followers
 

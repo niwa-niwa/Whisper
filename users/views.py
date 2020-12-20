@@ -46,6 +46,24 @@ class UserPostsListAndCreate(UserShow, PostStore,):
         return render(request, 'user_show.html', context)
 
 
+class UserFollowings(PostStore):
+    def get(self, request, *args, **kwargs):
+        form_view = PostStore.get(self, request, *args, **kwargs)
+        form_data = form_view.context_data['form']
+        context = {'form':form_data}
+
+        return render(request, 'followings.html', context)
+
+
+class UserFollowers(PostStore):
+    def get(self, request, *args, **kwargs):
+        form_view = PostStore.get(self, request, *args, **kwargs)
+        form_data = form_view.context_data['form']
+        context = {'form':form_data}
+
+        return render(request, 'followers.html', context)
+
+
 # フォローする
 def followings(request, pk):
 
