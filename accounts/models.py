@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from users.models import UsersRelation
 from django.apps import apps
+from itertools import chain
+
 
 
 class CustomUser(AbstractUser):
@@ -18,6 +20,15 @@ class CustomUser(AbstractUser):
     def getPosts(self):
         post_model = apps.get_model('posts', 'Post')
         posts = post_model.objects.filter(user=self).order_by('-created_at')
+        return posts
+
+    def timeLine(self):
+        user = CustomUser.objects.filter(id=self.id)
+        followings = self.followings.values_list("id", flat=True)
+        result_list =list(chain(user, followings))
+        post_model = apps.get_model('posts', 'Post')
+        posts = post_model.objects.filter(user__in=result_list).order_by('-created_at')
+
         return posts
 
 
