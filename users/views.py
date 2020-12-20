@@ -27,10 +27,12 @@ class UsersIndex(LoginRequiredMixin, generic.ListView):
 class UserShow(LoginRequiredMixin, generic.DetailView,):
     context_object_name = 'cuser'
     model = CustomUser
+    slug_field = "username"
+    slug_url_kwarg = "username"
     template_name = 'user_show.html'
 
     def get_queryset(self):
-        cuser = CustomUser.objects.filter(pk=self.kwargs["pk"])
+        cuser = CustomUser.objects.filter(username=self.kwargs.get("username"))
         return cuser
 
 

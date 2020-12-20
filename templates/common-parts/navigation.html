@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a href=
             {% if user.is_authenticated %}
-                "{% url 'users:user_profile' user.pk %}"
+                "{% url 'users:user_page' user.username %}"
             {% else %}
                 "/"
             {% endif %}
@@ -25,7 +25,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <ul class="dropdown-item">
-                                <li class="dropdown-item"><a href="{% url 'users:user_profile' user.pk %}">My Profile</a></li>
+                                <li class="dropdown-item"><a href="{% url 'users:user_page' user.username %}">My Profile</a></li>
                                 <li class="dropdown-item"><a href="{% url 'users:user_followings' user.pk %}"> Followings</a></li>
                                 <li class="dropdown-item"><a href="{% url 'users:user_followers' user.pk %}">Followers</a></li>
                                 <li class="dropdown-divider"></li>
