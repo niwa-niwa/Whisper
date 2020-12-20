@@ -26,8 +26,8 @@
                         <ul class="dropdown-menu dropdown-menu-right">
                             <ul class="dropdown-item">
                                 <li class="dropdown-item"><a href="{% url 'users:user_page' user.username %}">My Profile</a></li>
-                                <li class="dropdown-item"><a href="{% url 'users:user_followings' user.pk %}"> Followings</a></li>
-                                <li class="dropdown-item"><a href="{% url 'users:user_followers' user.pk %}">Followers</a></li>
+                                <li class="dropdown-item"><a href="{% url 'users:user_followings' user.username %}"> Followings</a></li>
+                                <li class="dropdown-item"><a href="{% url 'users:user_followers' user.username %}">Followers</a></li>
                                 <li class="dropdown-divider"></li>
                                 <li class="dropdown-item">
                                     <a href="{% url 'account_logout' %}">Log Out</a>
