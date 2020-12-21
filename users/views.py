@@ -36,6 +36,15 @@ class UserShow(LoginRequiredMixin, generic.DetailView,):
         return cuser
 
 
+class UserHome(PostStore):
+    def get(self,request, *args, **kwargs):
+        form_view = PostStore.get(self, request, *args, **kwargs)
+        form_data = form_view.context_data['form']
+        context = {'form':form_data}
+
+        return render(request, 'home.html', context)
+
+
 class UserPostsListAndCreate(UserShow, PostStore,):
     def get(self, request, *args, **kwargs):
         form_view = PostStore.get(self, request, *args, **kwargs)

@@ -19,10 +19,6 @@
 
             {% if cuser.post.all %}
                 {% include 'parts/posts.html' with posts=cuser.post.all user=user  %}
-
-                {% comment %} TODO これはHomeページでタイムラインとして採用 {% endcomment %}
-                {% comment %} {% include 'parts/posts.html' with posts=cuser.timeLine user=user  %} {% endcomment %}
-
             {% else %}
                 <p>投稿がありません。</p>
             {% endif %}
