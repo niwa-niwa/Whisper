@@ -141,5 +141,8 @@ cython_debug/
 
 db.splite3
 
+
+whisper/logs/*
+
 !.gitkeep
 !templates/parts/

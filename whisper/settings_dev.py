@@ -18,8 +18,8 @@ LOGGING ={
             'handlers':['console'],
             'level':'INFO',
         },
-        # diaryアプリケーションが利用するロガー
-        'diary':{
+        # whisperアプリケーションが利用するロガー
+        'whisper':{
             'handlers':['console'],
             'level':'DEBUG',
         },
