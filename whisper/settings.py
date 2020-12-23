@@ -21,27 +21,27 @@ LOGGING = {
             'handlers': ['file'],
             'level': 'INFO',
         },
-        'handlers':{
-            'file':{
-                'level': 'INFO',
-                'class': 'logging.handlers.TimedRotatingFileHandler',
-                'filename': os.path.join(BASE_DIR, 'logs/django.log'),
-                'formatter': 'prod',
-                'when': 'D',
-                'interval': 1,
-                'backupCount': 7,
-            },
+    },
+    'handlers':{
+        'file':{
+            'level': 'INFO',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'whisper/logs/django.log'),
+            'formatter': 'prod',
+            'when': 'D',
+            'interval': 1,
+            'backupCount': 7,
         },
-        'formatters':{
-            'prod':{
-                'format':'\t'.join([
-                    '%(asctime)s',
-                    '[%(levelname)s]',
-                    '%(pathname)s(Line:%(lineno)d)',
-                    '%(message)s'
-                ])
-            },
-        }
+    },
+    'formatters':{
+        'prod':{
+            'format':'\t'.join([
+                '%(asctime)s',
+                '[%(levelname)s]',
+                '%(pathname)s(Line:%(lineno)d)',
+                '%(message)s'
+            ])
+        },
     }
 }
 
